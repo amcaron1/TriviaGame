@@ -1,0 +1,67 @@
+html, body {
+    height:100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body:before {
+    background:url("../images/flag.jpg") no-repeat center center fixed;
+    display: block; content:""; position: absolute; z-index:-1;
+    top:0; left: 0; right: 0; height: 100%;
+    opacity:0.2;
+  }
+
+
+
+/* body{
+    background-image: url("../images/flag.jpg");
+    min-height: 100%;
+    opacity: 0.5;
+} */
+
+.centerBox{
+    text-align: center;
+}
+
+.headerBox{
+    margin-bottom: 40px;
+}
+
+.headerBox h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.rulesBox h5{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.questionBox{
+    margin-bottom: 40px;
+}
+
+#show-number{
+    height: 50px;
+}
+
+#questionH{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#trueH #falseH #submitH{
+    text-align: left;
+}
+
+#answerMessageH{
+    text-transform: capitalize;
+}
+
+#submitH{
+    margin-top: 20px;
+}
+
+#answerPictureH{
+    height: 100px;
+    width: auto;
+}
