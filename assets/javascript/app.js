@@ -31,25 +31,26 @@ $(document).ready(function() {
       $(".rulesBox").hide();
     }
     else if (questionCounter == lastQuestionIndex) {
+
       $(".resultsBox").hide();
       $("#trueH").attr("disabled", false);
       $("#falseH").attr("disabled", false);
       $("#submitH").attr("disabled", false);
-      $('input[name="answer"]').removeAttr('checked');
+      
       questionCounter = 0;
       correctCounter = 0;
       wrongCounter = 0;
     }
-    
+
+      $(".radio").prop("checked", false);
+
       var currentQuestion = questionArray[questionCounter].question;
       $("#questionH").text(currentQuestion);
 
       $(".resetBox").hide();
-
       $(".questionBox").show();
 
       runTimer()
-
   })
 
   function newQuestion() {
@@ -64,87 +65,82 @@ $(document).ready(function() {
     $("#falseH").attr("disabled", false);
     $("#submitH").attr("disabled", false);
 
-    $('input[name="answer"]').removeAttr('checked');
+    $(".radio").prop("checked", false);
 
     runTimer();
-
   }
 
   $(document).on("click", "#submitH", function() {
     stopTimer();
   }) 
 
-      function runTimer() {
-        $("#showNumberH").text(number);
-        intervalId = setInterval(decrement, 1000);
+  function runTimer() {
+    $("#showNumberH").text(number);
+    intervalId = setInterval(decrement, 1000);
+  }
+
+  function decrement() {
+
+    number--;
+    $("#showNumberH").html(number);
+
+    if (number === 0) {
+      stopTimer();
+    }
+  }
+
+  function stopTimer() {
+
+    clearInterval(intervalId);
+    number = 10;
+
+    $("#trueH").attr("disabled", true);
+    $("#falseH").attr("disabled", true);
+    $("#submitH").attr("disabled", true);
+
+    gradeQuestion();
+  }
+
+  function gradeQuestion() {
+    
+    var currentAnswer = $(".radio:checked").val();
+
+    if (currentAnswer == questionArray[questionCounter].answer) {
+      correctCounter++;
+    }
+    else {
+      wrongCounter++;
+    }
+
+    $("#answerMessageH").text(questionArray[questionCounter].answer);
+    $("#answerPictureH").attr("src", questionArray[questionCounter].picture);
+    $("#pictureCaptionH").text(questionArray[questionCounter].caption);
+    $(".messageBox").show();
+
+    
+    setTimeout(function() {
+
+      $(".messageBox").hide();
+
+      if (questionCounter == lastQuestionIndex) {
+        gradeTest();
       }
-
-      function decrement() {
-
-        number--;
-
-        $("#showNumberH").html(number);
-
-        if (number === 0) {
-
-          stopTimer();
-
-        }
+      else {
+      newQuestion();
       }
+    }, 5000);
+  }
 
-      function stopTimer() {
+  function gradeTest() {
 
-        clearInterval(intervalId);
-        number = 10;
+    
 
-        $("#trueH").attr("disabled", true);
-        $("#falseH").attr("disabled", true);
-        $("#submitH").attr("disabled", true);
+    $("#numberCorrectH").text("Number Correct: " + correctCounter);
+    $("#numberWrongH").text("Number Wrong: " + wrongCounter);
 
-        gradeQuestion();
-
-      }
-
-      function gradeQuestion() {
-        
-        var currentAnswer = $("input[type=radio][name=answer]:checked").val();
-
-        if (currentAnswer == questionArray[questionCounter].answer) {
-          correctCounter++;
-        }
-        else {
-          wrongCounter++;
-        }
-
-        $("#answerMessageH").text(questionArray[questionCounter].answer);
-        $("#answerPictureH").attr("src", questionArray[questionCounter].picture);
-        $("#pictureCaptionH").text(questionArray[questionCounter].caption);
-        $(".messageBox").show();
-
-        
-        setTimeout(function() {
-          $(".messageBox").hide();
-          if (questionCounter == lastQuestionIndex) {
-            gradeTest();
-          }
-          else {
-          newQuestion();
-          }
-        }, 5000);
-
-      }
-
-      function gradeTest() {
-
-        $(".questionBox").hide();
-
-        $("#numberCorrectH").text("Number Correct: " + correctCounter);
-        $("#numberWrongH").text("Number Wrong: " + wrongCounter);
-
-        $(".resultsBox").show();
-
-        $(".resetBox").show();
-      
-      }
+    $(".questionBox").hide();
+    $(".resultsBox").show();
+    $(".resetBox").show();
+  }
 
 })

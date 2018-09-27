@@ -1,24 +1,21 @@
-html, body {
+/* body{
+    background-image: url("../images/flag.jpg");
+    min-height: 100%;
+} */
+
+body{
     height:100%;
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
   }
   
-  body:before {
+body::before {
     background:url("../images/flag.jpg") no-repeat center center fixed;
     display: block; content:""; position: absolute; z-index:-1;
     top:0; left: 0; right: 0; height: 100%;
     opacity:0.2;
-  }
-
-
-
-/* body{
-    background-image: url("../images/flag.jpg");
-    min-height: 100%;
-    opacity: 0.5;
-} */
+}
 
 .centerBox{
     text-align: center;
@@ -37,6 +34,10 @@ html, body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+.resultsBox h5{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 .questionBox{
     margin-bottom: 40px;
 }
@@ -49,16 +50,12 @@ html, body {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-#trueH #falseH #submitH{
-    text-align: left;
+.radio{
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #answerMessageH{
     text-transform: capitalize;
-}
-
-#submitH{
-    margin-top: 20px;
 }
 
 #answerPictureH{
