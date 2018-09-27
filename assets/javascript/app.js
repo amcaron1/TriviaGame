@@ -24,7 +24,7 @@ $(document).ready(function() {
   $(".resultsBox").hide();
   $(".messageBox").hide();
 
-
+  // Handles the start of the first game or the restart after the end of a game.
   $(document).on("click", "#startH", function() {
 
     if (questionCounter == 0) {
@@ -53,6 +53,12 @@ $(document).ready(function() {
       runTimer()
   })
 
+  // Handle the submitting of an answer before the timer ends
+  $(document).on("click", "#submitH", function() {
+    stopTimer();
+  }) 
+
+  // Creates a new question after the last question's answer has been shown
   function newQuestion() {
 
     questionCounter++;
@@ -70,15 +76,14 @@ $(document).ready(function() {
     runTimer();
   }
 
-  $(document).on("click", "#submitH", function() {
-    stopTimer();
-  }) 
 
+  // Starts the timer for the amount of time that a player has to answer a question.
   function runTimer() {
     $("#showNumberH").text(number);
     intervalId = setInterval(decrement, 1000);
   }
 
+  // Decrements the timer every second and stops it when it gets to zero
   function decrement() {
 
     number--;
@@ -89,6 +94,7 @@ $(document).ready(function() {
     }
   }
 
+  // Stops the timer and calls the function to grade the question.
   function stopTimer() {
 
     clearInterval(intervalId);
@@ -101,6 +107,7 @@ $(document).ready(function() {
     gradeQuestion();
   }
 
+  // Grades the question, displays the answer, and either creates a new question or grades the test.
   function gradeQuestion() {
     
     var currentAnswer = $(".radio:checked").val();
@@ -131,9 +138,8 @@ $(document).ready(function() {
     }, 5000);
   }
 
+  // Displays the results of the test.
   function gradeTest() {
-
-    
 
     $("#numberCorrectH").text("Number Correct: " + correctCounter);
     $("#numberWrongH").text("Number Wrong: " + wrongCounter);

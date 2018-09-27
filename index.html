@@ -15,71 +15,77 @@
 
   <body>
 
-    <main class="main-wrapper">
+    <main>
       <div class="container">
 
         <div class="row">
-          <div class="col-md-3">
-          </div>
-          <div class="col-md-6 headerBox centerBox box">
-            <h2>Welcome to American History Trivia</h2>
-            <h6>You can't make it great again, if you don't know how great it was!</h6>
-          </div>
-          <div class="col-md-3">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-3">
-          </div>
-
-          <div class="col-md-6 rulesBox box">
-              <h5>Rules</h5>
-              <ul>
-                <li>You will be asked ten true/false questions.</li>
-                <li>You will have ten seconds to answer each question.</li>
-                <li>If you fail to answer before the timer is up, the question will be counted wrong.</li>
-                <li>You may seclect the Submit key so that you do not have to wait for the timer to hit zero.</li>
-                <li>After you submit or timeout, the correct answer will be displayed for five seconds.</li>
-                <li>The next question with its ten second timer will immediately follow.</li>
-                <li>After all questions are answered, your score will be displayed.</li>
-              </ul>
-          </div>
-
-          <div class="col-md-6 questionBox centerBox box">
-            <h5>Time Remaining</h5>
-            <h5 id="showNumberH"></h5>
-            <h5 id="questionH"></h5>
-            <form id="answersH">
-              <input type="radio" name="answer" value="true" id="trueH" class="radio" checked="false">True&nbsp;<br>
-              <input type="radio" name="answer" value="false" id="falseH" class="radio" checked="false">False<br><br>
-              <input type="submit" value="Submit" id="submitH">
-            </form>
-          </div>
-
-          <div class="col-md-6 resultsBox centerBox box">
-            <h5>Results</h5>
-            <h6 id="numberCorrectH"></h6>
-            <h6 id="numberWrongH"></h6>
-          </div>
 
           <div class="col-md-3">
           </div>
 
-        </div>
+          <div class="col-md-6 main-wrapper">
+            <div class="container">
 
-        <div class="row">
-          <div class="col-md-12 resetBox centerBox box">
-            <button type="button" id="startH">Start New Game</button>
-          </div>
-        </div>
+              <div class="row"></div>
+                <div class="col-md-12 headerBox centerBox box">
+                  <h2>Welcome to American History Trivia</h2>
+                  <h6>You can't make it great again, if you don't know how great it was!</h6>
+                </div>
+              </div>
 
-        <div class="row">
-          <div class="col-md-12 messageBox centerBox box">
-            <h6 id="answerMessageH"></h6>
-            <img src="" id="answerPictureH">
-            <h6 id="pictureCaptionH"></h6>
+              <div class="row">
+                <div class="col-md-12 rulesBox box">
+                    <h5>Rules</h5>
+                    <ul>
+                      <li>You will be asked five true/false questions.</li>
+                      <li>You will have ten seconds to answer each question.</li>
+                      <li>If you fail to answer before the timer is up, the question will be counted wrong.</li>
+                      <li>You may seclect the Submit key so that you do not have to wait for the timer to hit zero.</li>
+                      <li>After you submit or timeout, the correct answer will be displayed for five seconds.</li>
+                      <li>The next question with its ten second timer will immediately follow.</li>
+                      <li>After all questions are answered, your score will be displayed.</li>
+                    </ul>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 questionBox centerBox box">
+                  <h5>Time Remaining</h5>
+                  <h5 id="showNumberH"></h5>
+                  <h5 id="questionH"></h5>
+                  <form id="answersH">
+                    <input type="radio" name="answer" value="true" id="trueH" class="radio" checked="false">True&nbsp;<br>
+                    <input type="radio" name="answer" value="false" id="falseH" class="radio" checked="false">False<br><br>
+                    <input type="submit" value="Submit" id="submitH">
+                  </form>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 resultsBox centerBox box">
+                  <h5>Results</h5>
+                  <h6 id="numberCorrectH"></h6>
+                  <h6 id="numberWrongH"></h6>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 resetBox centerBox box">
+                  <button type="button" id="startH">Start New Game</button>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 messageBox centerBox box">
+                  <h6 id="answerMessageH"></h6>
+                  <img src="" id="answerPictureH">
+                  <h6 id="pictureCaptionH"></h6>
+                </div>
+              </div>
+
+            </div>
           </div>
+
         </div>
 
       </div>
