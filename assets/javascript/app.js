@@ -20,18 +20,20 @@ $(document).ready(function() {
   var intervalId;
   var lastQuestionIndex = questionArray.length - 1;
 
+  // Hides all boxes except rules at the start of game
   $(".questionBox").hide();
   $(".resultsBox").hide();
   $(".messageBox").hide();
 
   // Handles the start of the first game or the restart after the end of a game.
   $(document).on("click", "#startH", function() {
-
+    // If this is the first game
     if (questionCounter == 0) {
       $(".rulesBox").hide();
     }
+    // Else if this is the end of a game
     else if (questionCounter == lastQuestionIndex) {
-
+      // Hides results and enables answer buttons
       $(".resultsBox").hide();
       $("#trueH").attr("disabled", false);
       $("#falseH").attr("disabled", false);
@@ -41,9 +43,9 @@ $(document).ready(function() {
       correctCounter = 0;
       wrongCounter = 0;
     }
-
+      // Unchecks radio buttons
       $(".radio").prop("checked", false);
-
+      // Gets next trivia question from array
       var currentQuestion = questionArray[questionCounter].question;
       $("#questionH").text(currentQuestion);
 
@@ -53,7 +55,7 @@ $(document).ready(function() {
       runTimer()
   })
 
-  // Handle the submitting of an answer before the timer ends
+  // Handles the submitting of an answer before the timer ends
   $(document).on("click", "#submitH", function() {
     stopTimer();
   }) 
@@ -62,15 +64,15 @@ $(document).ready(function() {
   function newQuestion() {
 
     questionCounter++;
-
+    // Gets next trivia question from the array
     var currentQuestion = questionArray[questionCounter].question;
     $("#questionH").text(currentQuestion);
 
-    
+    // Enable answer buttons
     $("#trueH").attr("disabled", false);
     $("#falseH").attr("disabled", false);
     $("#submitH").attr("disabled", false);
-
+    // Unchecks radio buttons
     $(".radio").prop("checked", false);
 
     runTimer();
@@ -78,6 +80,8 @@ $(document).ready(function() {
 
 
   // Starts the timer for the amount of time that a player has to answer a question.
+  // setInterval calls decrement every 1 second
+  // intervalID identifies the timers so that clearInterval knows what timer to stop
   function runTimer() {
     $("#showNumberH").text(number);
     intervalId = setInterval(decrement, 1000);
@@ -96,10 +100,10 @@ $(document).ready(function() {
 
   // Stops the timer and calls the function to grade the question.
   function stopTimer() {
-
+    // Stops the timer and resets time to 10
     clearInterval(intervalId);
     number = 10;
-
+    // Disables answer buttons
     $("#trueH").attr("disabled", true);
     $("#falseH").attr("disabled", true);
     $("#submitH").attr("disabled", true);
@@ -109,22 +113,23 @@ $(document).ready(function() {
 
   // Grades the question, displays the answer, and either creates a new question or grades the test.
   function gradeQuestion() {
-    
+    // Gets answer from array
     var currentAnswer = $(".radio:checked").val();
-
+    // Checks user answer
     if (currentAnswer == questionArray[questionCounter].answer) {
       correctCounter++;
     }
     else {
       wrongCounter++;
     }
-
+    // Displays the answer
     $("#answerMessageH").text(questionArray[questionCounter].answer);
     $("#answerPictureH").attr("src", questionArray[questionCounter].picture);
     $("#pictureCaptionH").text(questionArray[questionCounter].caption);
     $(".messageBox").show();
 
-    
+    // setTimeout executes the statements after 5 seconds
+    // So after 5 seconds, the answer is hidden and either the test is graded or a new quesiton is displayed
     setTimeout(function() {
 
       $(".messageBox").hide();
