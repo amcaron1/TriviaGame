@@ -19,4 +19,7 @@
     - Use "clearInterval" to stop timer
     - Use "setTimeout" to execute a statement after a set amount of time
     - Check identity of checked radio button and reset
-    - 
+
+- Links
+    - Deployed: https://amcaron1.github.io/TriviaGame/
+    - GitHub repository: https://github.com/amcaron1/TriviaGame/
