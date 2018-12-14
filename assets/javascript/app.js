@@ -79,7 +79,6 @@ $(document).ready(function() {
     runTimer();
   }
 
-
   // Starts the timer for the amount of time that a player has to answer a question.
   // setInterval calls decrement every 1 second
   // intervalID identifies the timers so that clearInterval knows what timer to stop
@@ -124,7 +123,6 @@ $(document).ready(function() {
       wrongCounter++;
     }
   
-
     // Hack that allows for the resetting of the new answer so that the old answer is not briefly displayed
     setTimeout(() => {
       $(".messageBox").show();
