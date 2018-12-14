@@ -1,4 +1,3 @@
-var sequenceOrder = 0
 $(document).ready(function() {
 
   var questionArray = [
@@ -126,7 +125,7 @@ $(document).ready(function() {
     }
   
 
-    // hack with set timeout
+    // Hack that allows for the resetting of the new answer so that the old answer is not briefly displayed
     setTimeout(() => {
       $(".messageBox").show();
     }, 0)
@@ -135,8 +134,6 @@ $(document).ready(function() {
     $("#answerMessageH").text(questionArray[questionCounter].answer);
     $("#answerPictureH").attr("src", questionArray[questionCounter].picture);
     $("#pictureCaptionH").text(questionArray[questionCounter].caption);
-    
-    sequenceOrder++
 
     // setTimeout executes the statements after 5 seconds
     // So after 5 seconds, the answer is hidden and either the test is graded or a new quesiton is displayed
