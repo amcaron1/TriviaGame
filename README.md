@@ -7,9 +7,6 @@
     - Keep track of correct answers
     - At end of game, give score and allow for user to start a new game 
 
-
-
-
 - Key or new skills
     - Use css "text-transform: capitalize;" to capitalize the first letter of a word
     - Use an array of objects to store information about T/F questions
