@@ -57,7 +57,6 @@ $(document).ready(function() {
 
   // Handles the submitting of an answer before the timer ends
   $(document).on("click", "#submitH", function() {
-    console.log('about to stop timer')
     stopTimer();
   }) 
 
@@ -81,7 +80,7 @@ $(document).ready(function() {
 
   // Starts the timer for the amount of time that a player has to answer a question.
   // setInterval calls decrement every 1 second
-  // intervalID identifies the timers so that clearInterval knows what timer to stop
+  // intervalId identifies the timers so that clearInterval knows what timer to stop
   function runTimer() {
     $("#showNumberH").text(number);
     intervalId = setInterval(decrement, 1000);
@@ -91,7 +90,7 @@ $(document).ready(function() {
   function decrement() {
 
     number--;
-    $("#showNumberH").html(number);
+    $("#showNumberH").text(number);
 
     if (number === 0) {
       stopTimer();
@@ -124,7 +123,7 @@ $(document).ready(function() {
     }
   
     // Hack that allows for the resetting of the new answer so that the old answer is not briefly displayed
-    setTimeout(() => {
+    setTimeout(function() {
       $(".messageBox").show();
     }, 0)
 
@@ -132,7 +131,7 @@ $(document).ready(function() {
     $("#answerMessageH").text(questionArray[questionCounter].answer);
     $("#answerPictureH").attr("src", questionArray[questionCounter].picture);
     $("#pictureCaptionH").text(questionArray[questionCounter].caption);
-
+    
     // setTimeout executes the statements after 5 seconds
     // So after 5 seconds, the answer is hidden and either the test is graded or a new quesiton is displayed
     setTimeout(function() {
@@ -143,7 +142,7 @@ $(document).ready(function() {
         gradeTest();
       }
       else {
-      newQuestion();
+        newQuestion();
       }
     }, 5000);
   }
